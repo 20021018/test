@@ -43,6 +43,6 @@ CPP_DEPS += \
 
 # Each subdirectory must supply rules for building sources it contributes
 marlin/%.o: ../marlin/%.cpp
-	@	@	riscv-none-embed-g++ -march=rv32imacxw -mabi=ilp32 -msmall-data-limit=8 -msave-restore -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -Wuninitialized  -g -I"D:\桌面\毕业设计\程序源码\fatfs\fatfs\BSP" -I"D:\桌面\毕业设计\程序源码\fatfs\fatfs\Peripheral\inc" -I"D:\桌面\毕业设计\程序源码\fatfs\fatfs\User" -I"D:\桌面\毕业设计\程序源码\fatfs\fatfs\marlin" -I"D:\桌面\毕业设计\程序源码\fatfs\fatfs\Core" -I"D:\桌面\毕业设计\程序源码\fatfs\fatfs\Debug" -std=gnu++11 -fabi-version=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -c -o "$@" "$<"
+	@	@	riscv-none-embed-g++ -march=rv32imacxw -mabi=ilp32 -msmall-data-limit=8 -msave-restore -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -Wuninitialized  -g -I"D:\桌面\毕业设计\程序源码\mini-3D-printer based on ch32v307 - git\fatfs\BSP" -I"D:\桌面\毕业设计\程序源码\mini-3D-printer based on ch32v307 - git\fatfs\Peripheral\inc" -I"D:\桌面\毕业设计\程序源码\mini-3D-printer based on ch32v307 - git\fatfs\User" -I"D:\桌面\毕业设计\程序源码\mini-3D-printer based on ch32v307 - git\fatfs\marlin" -I"D:\桌面\毕业设计\程序源码\mini-3D-printer based on ch32v307 - git\fatfs\Core" -I"D:\桌面\毕业设计\程序源码\mini-3D-printer based on ch32v307 - git\fatfs\Debug" -std=gnu++11 -fabi-version=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -c -o "$@" "$<"
 	@	@
 

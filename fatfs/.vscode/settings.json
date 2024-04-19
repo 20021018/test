@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "MMC_SD.C": "cpp"
+        "MMC_SD.C": "cpp",
+        "debug.h": "c"
     }
 }

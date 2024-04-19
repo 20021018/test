@@ -15,7 +15,7 @@
 #define FAN_PIN             GPIOC, GPIO_Pin_1	 //挤出机风扇
 #define LED_PIN            GPIOE, GPIO_Pin_0	 //MOS外接LED ->PE0
 
-#define BUZ_PIN            GPIOA, GPIO_Pin_12 	
+#define BUZ_PIN            GPIOA, GPIO_Pin_12 	//蜂鸣器
 
 #define POWER_CHK       	GPIOA, GPIO_Pin_11	 //电源掉电检测
 

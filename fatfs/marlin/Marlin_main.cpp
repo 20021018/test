@@ -41,6 +41,8 @@
 #include "mmc_sd.h"
 #include "bsp_usart.h"
 
+#include "ch32v30x.h" //-？
+#include"debug.h"
 
 
 #define VERSION_STRING  "SardineBoard V1.0"
@@ -144,6 +146,8 @@
 
 //Stepper Movement Variables
 void All_Axis_Go_Home(void);
+
+void USART2_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
 //===========================================================================
 //=============================imported variables============================
 //===========================================================================
@@ -380,10 +384,6 @@ void servo_init()
 }
 
 
-
-
-
-
 void delay_mms(u16 time)
 {    
    u16 i=0;  
@@ -396,15 +396,19 @@ void delay_mms(u16 time)
 
 void setup()
 {
+    //
+
+    SystemCoreClockUpdate();
+    //
 
 	SET_OUTPUT(BUZ_PIN);
 	WRITE(BUZ_PIN,HIGH);
-  
-	//setup_killpin(); 
+
+	//setup_killpin();
   //setup_powerhold();
-	MySerialLcd.begin(9600);
+	//MySerialLcd.begin(9600);//暂时把串口屏初始化搁置
     MYSERIAL.begin(115200);
- 	SET_OUTPUT(LED_PIN); 
+ 	SET_OUTPUT(LED_PIN);
 // 	WRITE(LED_PIN,HIGH);
 
 	#ifdef SDSUPPORT
@@ -429,7 +433,7 @@ void setup()
   printf("%d",freeMemory());
   printf(MSG_PLANNER_BUFFER_BYTES);
   printf("%d\n",(int)(sizeof(block_t)*BLOCK_BUFFER_SIZE));
-	
+
   for(int8_t i = 0; i < BUFSIZE; i++) //用来标记命令缓冲区的数据是否需要保存在SD卡里
   {
     fromsd[i] = false;
@@ -442,16 +446,16 @@ void setup()
 //	#ifdef USE_WATCHDOG
 ////  watchdog_init(); //看门狗初始化
 //	#endif
- st_init();    //电机IO初始化，定时器2中断初始化，限位开关初始化
+  st_init();    //电机IO初始化，定时器2中断初始化，限位开关初始化
   //setup_photpin(); //触发外部相机拍照
   //servo_init();    //伺服舵机
   SystemTick_Init();  //系统时钟初始化,产生1ms的中断,用来计时
-    
-  #if defined(CONTROLLERFAN_PIN) 
+
+  #if defined(CONTROLLERFAN_PIN)
     SET_OUTPUT(CONTROLLERFAN_PIN); //Set pin used for driver cooling fan
-  #endif 
-	
-	MySerialLcd.Set_Page("main",1);	//串口屏进入主页面
+  #endif
+
+//	MySerialLcd.Set_Page("main",1);	//串口屏进入主页面
 	WRITE(BUZ_PIN,LOW);
 }
 
@@ -473,7 +477,7 @@ int main()
 	while(1)
 	{
 
-		if(buflen < (BUFSIZE-1))  
+		if(buflen < (BUFSIZE-1))
 			get_command(); //把串口缓冲区的数据解析出来保存到GM码命令缓冲区中
 		#ifdef SDSUPPORT
 		card.checkautostart(false); //初始化SD卡,以及M23,	M24支持G码写入SD卡
@@ -484,7 +488,7 @@ int main()
 			card.savefile(cmdbuffer[bufindr]); //命令数据是否写入SD卡
 			#endif
 			process_commands(); //命令的执行
-			buflen = (buflen-1); 
+			buflen = (buflen-1);
 			bufindr = (bufindr + 1)%BUFSIZE;
 		}
 		//check heater every n milliseconds

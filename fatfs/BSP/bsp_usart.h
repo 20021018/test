@@ -15,6 +15,7 @@
 
 #define SERIAL_PORT 2
 
+#define test_PORT 12
 //#if SERIAL_PORT == 1
 //#define USART1 USART1
 //#elif SERIAL_PORT == 2
@@ -25,6 +26,7 @@
 
 
 #define RX_BUFFER_SIZE 128
+
 
 
 typedef struct 
@@ -56,10 +58,11 @@ public:
 	//串口数据发送函数
 	FORCE_INLINE void write(uint8_t c)
 	{
-#if SERIAL_PORT==1
+#if test_PORT==1
 		while(!(USART1->STATR&USART_STATR_TXE)){};
 		USART1->DATAR = c;
-#elif SERIAL_PORT==2
+#endif 
+#if SERIAL_PORT==2
 	    while(!(USART2->STATR&USART_STATR_TXE)){};
 	    USART2->DATAR = c;
 
@@ -69,7 +72,7 @@ public:
     
   FORCE_INLINE void checkRx(void)
   {
-#if SERIAL_PORT==1
+#if test_PORT==1
 		if((USART1->STATR&USART_STATR_RXNE)!=0)
 		{
 			unsigned char c = USART1->DATAR;
@@ -80,8 +83,9 @@ public:
 				rx_buffer.head = i;
 			}
      }
+#endif 
 
-#elif SERIAL_PORT==2
+#if SERIAL_PORT==2
 	    if((USART2->STATR&USART_STATR_RXNE)!=0)
 	        {
 	            unsigned char c = USART2->DATAR;
