@@ -276,7 +276,7 @@ FORCE_INLINE void trapezoid_generator_reset() {
 
 #ifdef __cplusplus
 extern "C" {
-	
+void TIM2_IRQHandler() __attribute__((interrupt("WCH-Interrupt-fast")));
 void TIM2_IRQHandler()
 { 
 	if(TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
@@ -663,7 +663,7 @@ void TIM2_IRQHandler()
 //ADVANCE是外扩2个挤出轴,这样就有3个挤出轴,可以做混色打印
 #ifdef ADVANCE
   unsigned char old_OCR0A;
-  // Timer interrupt for E. e_steps is set in the main routine;
+  // Timer interrupt for E. e_steps is set in the main routine;nono
   // Timer 0 is shared with millies
   ISR(TIMER0_COMPA_vect)
   {
@@ -904,7 +904,7 @@ void st_init()
   // output mode = 00 (disconnected)
 ////  TCCR1A &= ~(3<<COM1A0); 
 ////  TCCR1A &= ~(3<<COM1B0); 
-  Time2_Configure(100); //定时器的配置,用来配置产生步进的脉冲输出	
+  Time2_Configure(100); //定时器的配置,用来配置产生步进的脉冲输出
   // Set the timer pre-scaler
   // Generally we use a divider of 8, resulting in a 2MHz timer
   // frequency on a 16MHz MCU. If you are going to change this, be

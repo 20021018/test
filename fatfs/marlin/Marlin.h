@@ -52,13 +52,13 @@
 
 
 
-#define CRITICAL_SECTION_START cli()
+#define CRITICAL_SECTION_START cli()//原本为cli()
 
 #define CRITICAL_SECTION_END  sei()
 
 #define lround(N) ((floor)(N+0.5f))
 
-#define F_CPU 16000000UL
+#define F_CPU 72000000UL//原来是16000000UL
 
 
 

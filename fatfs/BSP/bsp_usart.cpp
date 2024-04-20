@@ -63,10 +63,7 @@ int fgetc(FILE *f)
 	while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
 	return (int)USART_ReceiveData(USART1);
 }
-#ifdef __cplusplus
 
-	}
-#endif
 
 ring_buffer rx_buffer  =  { { 0 }, 0, 0 };
 
@@ -85,10 +82,8 @@ void store_char(unsigned char c)
   }
 }
 
-#ifdef __cplusplus
-extern "C" {
-//串口1中断用来接收串口数据
-#endif
+
+
 
 #if test_PORT == 1
 void USART1_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));

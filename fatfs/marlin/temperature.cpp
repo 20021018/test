@@ -923,8 +923,11 @@ int read_max6675()
 #ifdef __cplusplus
 extern "C" {
 #endif		  
+void TIM3_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
 void TIM3_IRQHandler(void)
 {
+
+  printf("for test\r\n");
 	if(TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
 	{
 			 //清除TIM2的中断待处理位

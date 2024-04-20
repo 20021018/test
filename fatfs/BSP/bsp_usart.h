@@ -1,7 +1,9 @@
 #ifndef BSB_USART_H
 #define BSB_USART_H
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <stdio.h>
 #include "ch32v30x.h"
@@ -37,6 +39,16 @@ typedef struct
 }ring_buffer;
 
 extern ring_buffer rx_buffer;
+
+void USART2_IRQHandler(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+
+
+
 
 #ifdef __cplusplus
 class  MarlinSerial
@@ -113,6 +125,7 @@ public:
     }
     
 } ;
+
 extern MarlinSerial MSerial;
 #endif
 

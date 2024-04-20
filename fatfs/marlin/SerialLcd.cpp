@@ -956,13 +956,13 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 	int i,j,read_data;
 
 	if(available()<4) return -1; //数据不够
-	
+
 	for(j=1;j<4;j++)//(3)复制数据
 	{
 			read_data=MySerialLcd.read();
 			buff[j] = read_data;
 	}
-	
+
 	key = buff[0];
 	key <<= 8;
 	key |= buff[1];
@@ -970,17 +970,17 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 	key |= buff[2];
 	key <<= 8;
 	key |= buff[3];
-	
+
 	switch(key)
 	{
 /////////////////////////////SD卡打印///////////////////////////////////
-		case P0BT0_SDPRINT:	 
+		case P0BT0_SDPRINT:
 		//	card.initsd();
 			static uint8_t lcd_oldcardstatus=0;
-			if((IS_SD_INSERTED != lcd_oldcardstatus))	
+			if((IS_SD_INSERTED != lcd_oldcardstatus))
 			{
 			    lcd_oldcardstatus = IS_SD_INSERTED;
-				    
+
 			    if(lcd_oldcardstatus)
 			    {
 				    card.initsd();
@@ -994,17 +994,17 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 			{
 				MySerialLcd.Set_Page("sderror",4);
 				return 0;
-			}	
-			
+			}
+
 			MySerialLcd.Set_Page("sd",4);	//切换到file文件名显示页面,一页只能显示5个文件名
-			
+
 			MySerialLcd.Set_Txt(0," ");
 			MySerialLcd.Set_Txt(1," ");
 			MySerialLcd.Set_Txt(2," ");
 			MySerialLcd.Set_Txt(3," ");
-			
+
 			fileCnt = card.getfilecount(card.path); //总的文件数
-				
+
 			char i;
 			file_i = 0;
 			for(i=0;i<min(fileCnt,4);i++,file_i++)
@@ -1018,19 +1018,19 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 		case P0BT1_CONFIG:	//main界面的模型选择按键
 			MySerialLcd.Set_Page("configure",12);
 		break;
-////////////////////////////P0BT2_PLATFORM/////////////////////////////////////////////		
+////////////////////////////P0BT2_PLATFORM/////////////////////////////////////////////
 		case P0BT2_PLATFORM: //设置功能
-			MySerialLcd.Set_Page("level",13);	
-		break;	
+			MySerialLcd.Set_Page("level",13);
+		break;
 //////////////////////////P0BT3_MOVE/////////////////////////////////////////////
 		case P0BT3_MOVE:
 			MySerialLcd.Set_Page("move",5);
 		break;
-///////////////////////////P0BT4_HEAT////////////////////////////////		
+///////////////////////////P0BT4_HEAT////////////////////////////////
 		case P0BT4_HEAT:
 			MySerialLcd.Set_Page("heat",6);
 		break;
-/////////////////////////P0BT5_SYS//////////////////////////////				
+/////////////////////////P0BT5_SYS//////////////////////////////
 		case P0BT5_SYS:
 			MySerialLcd.Set_Page("sys",10);
 		break;
@@ -1039,7 +1039,7 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 		case P4T0_TXT://打印第一行
 			file_i = 4*filepage+1;
 			if(file_i>fileCnt) return 0;
-		
+
 			card.getfilename(file_i,card.path);
 			if(FILE_IS_DIR) //如果选择的是文件夹
 			{
@@ -1058,7 +1058,7 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 		case P4T1_TXT://打印第二行
 			file_i = 4*filepage+2;
 			if(file_i>fileCnt) return 0;
-		
+
 			card.getfilename(file_i,card.path);
 			if(FILE_IS_DIR) //如果选择的是文件夹
 			{
@@ -1076,7 +1076,7 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 		case P4T2_TXT://打印第三行
 			file_i = 4*filepage+3;
 			if(file_i>fileCnt) return 0;
-		
+
 			card.getfilename(file_i,card.path);
 			if(FILE_IS_DIR) //如果选择的是文件夹
 			{
@@ -1090,12 +1090,12 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 			}
 			MySerialLcd.Set_Page("sdsure",14);	//打印确认
 			MySerialLcd.Set_Txt(1,FILE_VALID_NAME); //显示文件名称
-			
+
 		break;
 		case P4T3_TXT://打印第4行
 			file_i = 4*filepage+4;
 			if(file_i>fileCnt) return 0;
-		
+
 			card.getfilename(file_i,card.path);
 			if(FILE_IS_DIR) //如果选择的是文件夹
 			{
@@ -1109,7 +1109,7 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 			}
 			MySerialLcd.Set_Page("sdsure",14);	//打印确认
 			MySerialLcd.Set_Txt(1,FILE_VALID_NAME); //显示文件名称
-			
+
 		break;
 		case P4BT3_LAST://上一页
 			if(filepage>0)
@@ -1146,7 +1146,7 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 				MySerialLcd.Set_Txt(1," ");
 				MySerialLcd.Set_Txt(2," ");
 				MySerialLcd.Set_Txt(3," ");
-				
+
 				filepage++;
 				file_i = 4*filepage;
 				char i;
@@ -1157,7 +1157,7 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 				}
 			}
 		break;
-////////////////sdsure///////////////////////////			
+////////////////sdsure///////////////////////////
 		case 	P17BT0_SURE:
 			status_page = 0;  //打印页面状态
 			print_total_layer=0;
@@ -1167,17 +1167,17 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 			MySerialLcd.Set_Page("print",7);
 		 // MySerialLcd.Set_Num(0,(uint16_t)target_temperature[0]); //挤出设定温度
 		//	MySerialLcd.Set_Num(1,(uint16_t)target_temperature[1]); //热床设定温度
-			MySerialLcd.Set_Txt(7,card.fno.lfname);	
+			MySerialLcd.Set_Txt(7,card.fno.lfname);
 			card.openFile(card.fno.lfname,true);
 			card.startFileprint();
 			starttime=millis();	//开始打印的时间
-		break;			
+		break;
 		case P17BT1_CANCEL: //取消打印
 			this->Set_Page("sd",4);
 		break;
 ///////////////////////print页面////////////////////////////////
 		case P7BT0_PAUSE:
-			
+
 			static char pause=0;
 			if(pause==0)
 			{
@@ -1195,25 +1195,25 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 		break;
 		case P7BT10_MORE:
 		break;
-		
+
 /////////////sdcacel//////////////////////////////////
 		case P18BT0_YES:
 			  card.sdprinting = false;
 		    card.closefile();
 		    quickStop();
-				autotempShutdown();	
+				autotempShutdown();
 				MySerialLcd.Set_Page("main",0);
 		break;
 		case P18BT1_NO:
 			MySerialLcd.Set_Page("print",7);
 		break;
-///////////////////////move/////////////////////////////		
+///////////////////////move/////////////////////////////
 		case P5BT9_LAST:
 		case P5BT11_MAIN:
 		case P5BT10_NEXT:
 			MySerialLcd.Set_Page("main",0);
-		break;	
-		
+		break;
+
 		case P5BT0_FRONT:
 			enquecommand("G91");
 			enquecommand("G0 X10");
@@ -1227,13 +1227,13 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 		case P5BT2_LEFT:
 			enquecommand("G91");
 			enquecommand("G0 Y10");
-			enquecommand("G90");	
+			enquecommand("G90");
 		break;
 		case P5BT3_RIGHT:
 			enquecommand("G91");
 			enquecommand("G0 Y-10");
-			enquecommand("G90");	
-		break;	
+			enquecommand("G90");
+		break;
 		case P5BT4_UP:
 			enquecommand("G91");
 			enquecommand("G0 Z10");
@@ -1243,19 +1243,19 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 			enquecommand("G91");
 			enquecommand("G0 Z-10");
 			enquecommand("G90");
-		break;		
+		break;
 		case P5CK0_10:
 		break;
 		case P5CK1_1:
-		break;	
+		break;
 		case P5CK2_01:
 		break;
-		
-		
+
+
 		default:
 		break;
 	}
-	
+
 	return 0;
 }
 
@@ -1263,10 +1263,10 @@ uint8_t SerialLcd::LCD_Key_Swtich(void)
 uint16_t SerialLcd::LCD_Press_Key(char page,char value)
 {
 	uint8_t buff[]={0x65,0x00,0x00,0x00,0xff,0xff,0xff};
-	
+
 	buff[1] = page;
 	buff[2] = value;
-	
+
 	writecmd(buff,sizeof(buff));
 	return 0;
 }

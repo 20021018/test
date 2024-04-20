@@ -6,14 +6,15 @@ volatile uint32_t system_minute = 0;
 #ifdef __cplusplus
 extern "C" {
 #endif
-	
+
 //stm32产生系统时钟
+
 void SysTick_Handler(void)
 {
 	static int ms;
-	
+
 	system_ms++;
-	
+
 	ms++;
 	if(ms==6000)
 	{
@@ -41,7 +42,7 @@ void SysTick_Handler(void)
 
 RV_STATIC_INLINE uint32_t SysTick_Config(uint64_t ticks)
 {
-  if (ticks > 0xffffffffffffffff)  return (1);            /* Reload value impossible */
+  if (ticks > 0xffffffffffffffff)     return (1);          /* Reload value impossible */
 
   SysTick->CMP  = (ticks & 0xffffffffffffffff) - 1;      /* set reload register */
   NVIC_SetPriority(SysTicK_IRQn, (1<<3) - 1);  /* set Priority for Cortex-M0 System Interrupts */
@@ -51,8 +52,11 @@ RV_STATIC_INLINE uint32_t SysTick_Config(uint64_t ticks)
   NVIC_EnableIRQ(SysTicK_IRQn);
 
   SysTick->CTLR  = 0x0000002f;
+
   return (0);            /* Function successful */
+
 }
+
 //系统时钟产生1ms的定时中断
 
 void  SystemTick_Init(void)
@@ -75,7 +79,7 @@ void timer3_init()
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3 , ENABLE);  
 	TIM_DeInit(TIM3);
 	
-	TIM_TimeBaseStructure.TIM_Period=71;          
+	TIM_TimeBaseStructure.TIM_Period=71;
 	TIM_TimeBaseStructure.TIM_Prescaler=1000-1;     
 	TIM_TimeBaseStructure.TIM_ClockDivision=TIM_CKD_DIV1;   
 	TIM_TimeBaseStructure.TIM_CounterMode=TIM_CounterMode_Up;
