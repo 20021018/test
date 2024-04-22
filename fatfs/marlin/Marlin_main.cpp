@@ -394,9 +394,7 @@ void delay_mms(u16 time)
 }
 
 void setup()
-{//123
-    //
-    //__enable_irq();
+{
    // SystemCoreClockUpdate();
     //
 
@@ -476,27 +474,28 @@ int main()
 
 	while(1)
 	{
-////	    sei();
-//		if(buflen < (BUFSIZE-1))
-//			get_command(); //把串口缓冲区的数据解析出来保存到GM码命令缓冲区中
-//		#ifdef SDSUPPORT
-//		card.checkautostart(false); //初始化SD卡,以及M23,	M24支持G码写入SD卡
-//		#endif
-//		if(buflen)
-//		{
-//			#ifdef SDSUPPORT
-//			card.savefile(cmdbuffer[bufindr]); //命令数据是否写入SD卡
-//			#endif
-//			process_commands(); //命令的执行
-//			buflen = (buflen-1);
-//			bufindr = (bufindr + 1)%BUFSIZE;
-//		}
-//		//check heater every n milliseconds
-//		manage_heater(); 			//温度转换,PID调温,软PWM输出
-//		manage_inactivity(); //加热故障管理
-//		checkHitEndstops();	 //限位开关触发后发送信息
-//		MySerialLcd.LCD_Run(); //串行触摸屏的数据处理
-//	//	IWDG_Feed(); //看门狗喂狗
+//
+		if(buflen < (BUFSIZE-1))
+			get_command(); //把串口缓冲区的数据解析出来保存到GM码命令缓冲区中
+		#ifdef SDSUPPORT
+		card.checkautostart(false); //初始化SD卡,以及M23,	M24支持G码写入SD卡
+		#endif
+		if(buflen)
+		{
+			#ifdef SDSUPPORT
+			card.savefile(cmdbuffer[bufindr]); //命令数据是否写入SD卡
+			#endif
+			process_commands(); //命令的执行
+			buflen = (buflen-1);
+			bufindr = (bufindr + 1)%BUFSIZE;
+		}
+		//check heater every n milliseconds
+		manage_heater(); 			//温度转换,PID调温,软PWM输出
+		manage_inactivity(); //加热故障管理
+		checkHitEndstops();	 //限位开关触发后发送信息
+		MySerialLcd.LCD_Run(); //串行触摸屏的数据处理
+	//	IWDG_Feed(); //看门狗喂狗
+
 	}
 	return 0;
 }
@@ -620,7 +619,7 @@ void get_command()
               serial_count = 0;
               return;
             }
-            //if no errors, continue parsing
+            //if no errors, continue parsinghello
           }
           else
           {

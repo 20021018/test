@@ -114,7 +114,7 @@ void USART2_IRQHandler(void)
 {
     if(USART_GetITStatus(USART2, USART_IT_RXNE)!= RESET)
     {
-        printf("hello\r\n");
+
 
         unsigned char c = USART2->DATAR;
 //      USART_SendData(USART2, c);
@@ -260,7 +260,7 @@ void MarlinSerial::begin(uint32_t baud)
  USART_Init(USART2, &USART_InitStructure); //初始化串口1
  USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);//开启串口接受中断
  USART_Cmd(USART2, ENABLE);
- printf("  uart2_begin\r\n");
+ //printf("  uart2_begin\r\n");
 #endif
 
 
