@@ -828,6 +828,7 @@ static void homeaxis(int axis)
  
 void All_Axis_Go_Home(void)
 {
+    printf("gohome\r\n");
     saved_feedrate = feedrate;
     saved_feedmultiply = feedmultiply;
     feedmultiply = 100;
@@ -931,7 +932,7 @@ void process_commands()
   char *starpos = NULL;
 
   if(code_seen('G'))
-  {
+  {  printf("process\r\n");
     switch((int)code_value())
     {
     case 0: // G0 -> G1
