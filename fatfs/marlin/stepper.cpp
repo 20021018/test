@@ -30,7 +30,7 @@
 #include "bsp_pin.h"
 #include "bsp_usart.h"
 #include "bsp_watchdog.h"
-#include "Seriallcd.h"
+//#include "Seriallcd.h"
 #include "bsp_watchdog.h"
 
 //===========================================================================
@@ -940,7 +940,7 @@ void st_synchronize()
 		IWDG_Feed();
     manage_heater();
     manage_inactivity();
-		MySerialLcd.LCD_Run();
+//		MySerialLcd.LCD_Run();
   }
 }
 

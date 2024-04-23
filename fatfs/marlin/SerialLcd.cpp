@@ -1337,19 +1337,19 @@ void SerialLcd::Update(void)
 			static int val_last1;
 			if(val!=0xffff)
 			{
-				if(val_last1!=val)
-				{
-					val_last1=val;
-					if(val>HEATER_1_MAXTEMP)//操作最大温度
-					{
-						MySerialLcd.Set_Num(1,HEATER_1_MAXTEMP);
-					}
-					else
-					{
-						target_temperature[1]=val;
-					}
-				}
-				else
+//				if(val_last1!=val)
+//				{
+//					val_last1=val;
+//					if(val>HEATER_1_MAXTEMP)//操作最大温度
+//					{
+//						MySerialLcd.Set_Num(1,HEATER_1_MAXTEMP);
+//					}
+//					else
+//					{
+//						target_temperature[1]=val;
+//					}
+//				}
+//				else
 				{
 					MySerialLcd.Set_Num(1,target_temperature[1]);
 				}

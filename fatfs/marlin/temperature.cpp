@@ -396,7 +396,7 @@ void manage_heater()
         }
         else if(pid_error[e] < -PID_FUNCTIONAL_RANGE || target_temperature[e] == 0) { //如果负误差超过PID_FUNCTIONAL_RANGE,或者没有读到温度
           pid_output = 0;
-          pid_reset[e] = true;
+          pid_reset[e] = true;//为什么程序进入这里
         }
         else {
           if(pid_reset[e] == true) {
@@ -961,9 +961,14 @@ void TIM3_IRQHandler(void)
 			soft_pwm_0 = soft_pwm[0]; //1个挤出机
 			if(soft_pwm_0 > 0)
 			{				
-				WRITE(HEATER_0_PIN,LOW);
-				WRITE(HEATER_0_PIN,HIGH);
-				WRITE(HEATER_0_PIN,LOW);
+//				WRITE(HEATER_0_PIN,!LOW);//原来为low
+//				WRITE(HEATER_0_PIN,!HIGH);
+//				WRITE(HEATER_0_PIN,!LOW);
+
+                WRITE(HEATER_0_PIN,TEMP_HEAT_VALID);
+                WRITE(HEATER_0_PIN,!TEMP_HEAT_VALID);
+                WRITE(HEATER_0_PIN,TEMP_HEAT_VALID);
+
 				WRITE(LED_PIN,LOW);
 				WRITE(LED_PIN,HIGH);
 				WRITE(LED_PIN,LOW);

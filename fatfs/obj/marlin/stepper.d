@@ -37,9 +37,7 @@ marlin/stepper.o: ../marlin/stepper.cpp ../marlin/Marlin.h \
  ../marlin/stepper.h ../marlin/planner.h ../marlin/temperature.h \
  ../marlin/language.h ../marlin/speed_lookuptable.h \
  D:\桌面\毕业设计\程序源码\mini-3D-printer\ based\ on\ ch32v307\ -\ git\fatfs\BSP/bsp_watchdog.h \
- D:\桌面\毕业设计\程序源码\mini-3D-printer\ based\ on\ ch32v307\ -\ git\fatfs\marlin/Marlin.h \
- ../marlin/Seriallcd.h ../marlin/cardreader.h ../marlin/../FATFS/src/ff.h \
- ../marlin/../FATFS/src/integer.h ../marlin/../FATFS/src/ffconf.h
+ D:\桌面\毕业设计\程序源码\mini-3D-printer\ based\ on\ ch32v307\ -\ git\fatfs\marlin/Marlin.h
 
 ../marlin/Marlin.h:
 
@@ -128,13 +126,3 @@ D:\桌面\毕业设计\程序源码\mini-3D-printer\ based\ on\ ch32v307\ -\ git\fatfs\BSP
 D:\桌面\毕业设计\程序源码\mini-3D-printer\ based\ on\ ch32v307\ -\ git\fatfs\BSP/bsp_watchdog.h:
 
 D:\桌面\毕业设计\程序源码\mini-3D-printer\ based\ on\ ch32v307\ -\ git\fatfs\marlin/Marlin.h:
-
-../marlin/Seriallcd.h:
-
-../marlin/cardreader.h:
-
-../marlin/../FATFS/src/ff.h:
-
-../marlin/../FATFS/src/integer.h:
-
-../marlin/../FATFS/src/ffconf.h:

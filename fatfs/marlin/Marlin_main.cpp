@@ -36,7 +36,7 @@
 #include "ConfigurationStore.h"
 #include "language.h"
 #include "cardreader.h"
-#include "seriallcd.h"
+//#include "seriallcd.h"
 
 #include "mmc_sd.h"
 #include "bsp_usart.h"
@@ -493,7 +493,7 @@ int main()
 		manage_heater(); 			//温度转换,PID调温,软PWM输出
 		manage_inactivity(); //加热故障管理
 		checkHitEndstops();	 //限位开关触发后发送信息
-		MySerialLcd.LCD_Run(); //串行触摸屏的数据处理
+//		MySerialLcd.LCD_Run(); //串行触摸屏的数据处理
 	//	IWDG_Feed(); //看门狗喂狗
 
 	}
@@ -828,7 +828,6 @@ static void homeaxis(int axis)
  
 void All_Axis_Go_Home(void)
 {
-    printf("gohome\r\n");
     saved_feedrate = feedrate;
     saved_feedmultiply = feedmultiply;
     feedmultiply = 100;
@@ -932,7 +931,7 @@ void process_commands()
   char *starpos = NULL;
 
   if(code_seen('G'))
-  {  printf("process\r\n");
+  {
     switch((int)code_value())
     {
     case 0: // G0 -> G1
@@ -1291,7 +1290,7 @@ void process_commands()
 					IWDG_Feed();
           manage_heater();
           manage_inactivity();
-					MySerialLcd.LCD_Run();
+//					MySerialLcd.LCD_Run();
 		
 
         #ifdef TEMP_RESIDENCY_TIME

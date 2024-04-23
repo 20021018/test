@@ -10,9 +10,10 @@
 //#define HEATER_0_PIN        GPIOC, GPIO_Pin_0	 //挤出机1
 //#define LED_PIN            GPIOC, GPIO_Pin_2	 //MOS外接LED
 
-#define HEATER_BED_PIN      GPIOC, GPIO_Pin_3	 //热床
+//#define HEATER_BED_PIN      GPIOC, GPIO_Pin_3	 //热床              没有热床
+
 #define HEATER_0_PIN        GPIOC, GPIO_Pin_2	 //挤出机1
-#define FAN_PIN             GPIOC, GPIO_Pin_1	 //挤出机风扇
+//#define FAN_PIN             GPIOC, GPIO_Pin_1	 //挤出机风扇
 #define LED_PIN            GPIOE, GPIO_Pin_0	 //MOS外接LED ->PE0
 
 #define BUZ_PIN            GPIOA, GPIO_Pin_12 	//蜂鸣器

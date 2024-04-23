@@ -124,12 +124,12 @@ extern  const bool LEVEL_INVERTING;
 // 52 is 200k thermistor - ATC Semitec 204GT-2 (1k pullup)
 // 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan) (1k pullup)
 #define TEMP_SENSOR_0 1
-#define TEMP_SENSOR_1 1//一个温度传感器
+#define TEMP_SENSOR_1 0//一个温度传感器
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_BED 0//没有热床温度传感器
 
 //用来表示IO输出高电平加热还是低电平加热
-#define TEMP_HEAT_VALID  LOW  //pnp 低电平导通
+#define TEMP_HEAT_VALID  HIGH  //pnp 低电平导通 ->  aon6504 高电平导通
 
 /********************M109加热时固定时间内的温度偏差值***********************/
 // Actual temperature must be close to target for this long before M109 returns success
@@ -151,9 +151,9 @@ extern  const bool LEVEL_INVERTING;
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
 
-#define HEATER_0_MAXTEMP 230
-#define HEATER_1_MAXTEMP 230
-#define HEATER_2_MAXTEMP 230
+#define HEATER_0_MAXTEMP 245
+#define HEATER_1_MAXTEMP 190
+#define HEATER_2_MAXTEMP 190
 #define BED_MAXTEMP 50
 
 // If your bed has low resistance e.g. .6 ohm and throws the fuse you can duty cycle it to reduce the
@@ -196,7 +196,7 @@ extern  const bool LEVEL_INVERTING;
 // Bed Temperature Control
 // Select PID or bang-bang with PIDTEMPBED.  If bang-bang, BED_LIMIT_SWITCHING will enable hysteresis
 
-#define PIDTEMPBED
+//#define PIDTEMPBED
 //
 //#define BED_LIMIT_SWITCHING
 

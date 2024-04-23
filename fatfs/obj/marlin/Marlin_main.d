@@ -41,7 +41,6 @@ marlin/Marlin_main.o: ../marlin/Marlin_main.cpp ../marlin/Marlin.h \
  ../marlin/ConfigurationStore.h ../marlin/language.h \
  ../marlin/cardreader.h ../marlin/../FATFS/src/ff.h \
  ../marlin/../FATFS/src/integer.h ../marlin/../FATFS/src/ffconf.h \
- ../marlin/seriallcd.h \
  D:\桌面\毕业设计\程序源码\mini-3D-printer\ based\ on\ ch32v307\ -\ git\fatfs\BSP/mmc_sd.h
 
 ../marlin/Marlin.h:
@@ -141,7 +140,5 @@ D:\桌面\毕业设计\程序源码\mini-3D-printer\ based\ on\ ch32v307\ -\ git\fatfs\mar
 ../marlin/../FATFS/src/integer.h:
 
 ../marlin/../FATFS/src/ffconf.h:
-
-../marlin/seriallcd.h:
 
 D:\桌面\毕业设计\程序源码\mini-3D-printer\ based\ on\ ch32v307\ -\ git\fatfs\BSP/mmc_sd.h:

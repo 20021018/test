@@ -81,7 +81,7 @@
 // Multiple extruders can be assigned to the same pin in which case 
 // the fan will turn on when any selected extruder is above the threshold.
 /********************加热风扇等输出用软件模拟PWM******************/
-#define FAN_SOFT_PWM
+//#define FAN_SOFT_PWM
 
 //===========================================================================
 //=============================Mechanical Settings===========================
