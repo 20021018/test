@@ -2005,7 +2005,7 @@ void process_commands()
     if(tmp_extruder >= EXTRUDERS) {
       printf(MSG_START);;
       printf("T");
-      printf("%.1f",tmp_extruder);
+      printf("%.1f",tmp_extruder);//串口信息异常
       printf(MSG_INVALID_EXTRUDER);
     }
     else {

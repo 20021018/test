@@ -108,22 +108,22 @@ extern  const bool LEVEL_INVERTING;
 // -2 is thermocouple with MAX6675 (only for sensor 0)
 // -1 is thermocouple with AD595
 // 0 is not used
-// 1 is 100k thermistor - best choice for EPCOS 100k (4.7k pullup)
+// 1 is 100k thermistor - best choice for EPCOS 100k (4.7k pullup)    4100k
 // 2 is 200k thermistor - ATC Semitec 204GT-2 (4.7k pullup)
 // 3 is mendel-parts thermistor (4.7k pullup)
 // 4 is 10k thermistor !! do not use it for a hotend. It gives bad resolution at high temp. !!
 // 5 is 100K thermistor - ATC Semitec 104GT-2 (Used in ParCan) (4.7k pullup)
 // 6 is 100k EPCOS - Not as accurate as table 1 (created using a fluke thermocouple) (4.7k pullup)
-// 7 is 100k Honeywell thermistor 135-104LAG-J01 (4.7k pullup)
-// 8 is 100k 0603 SMD Vishay NTCS0603E3104FXT (4.7k pullup)
-// 9 is 100k GE Sensing AL03006-58.2K-97-G1 (4.7k pullup)
+// 7 is 100k Honeywell thermistor 135-104LAG-J01 (4.7k pullup) 3975
+// 8 is 100k 0603 SMD Vishay NTCS0603E3104FXT (4.7k pullup) no
+// 9 is 100k GE Sensing AL03006-58.2K-97-G1 (4.7k pullup)   3952k!!
 // 10 is 100k RS thermistor 198-961 (4.7k pullup)
 //    1k ohm pullup tables - This is not normal, you would have to have changed out your 4.7k for 1k
 //                          (but gives greater accuracy and more stable PID)
 // 51 is 100k thermistor - EPCOS (1k pullup)
 // 52 is 200k thermistor - ATC Semitec 204GT-2 (1k pullup)
 // 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan) (1k pullup)
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 9 //修改这个数值需要在temperature.c 和THERMISTORTABLES_H_里面修改对应的参数表
 #define TEMP_SENSOR_1 0//一个温度传感器
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_BED 0//没有热床温度传感器
@@ -151,7 +151,7 @@ extern  const bool LEVEL_INVERTING;
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
 
-#define HEATER_0_MAXTEMP 245
+#define HEATER_0_MAXTEMP 230
 #define HEATER_1_MAXTEMP 190
 #define HEATER_2_MAXTEMP 190
 #define BED_MAXTEMP 50
