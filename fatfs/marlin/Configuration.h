@@ -151,7 +151,7 @@ extern  const bool LEVEL_INVERTING;
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
 
-#define HEATER_0_MAXTEMP 230
+#define HEATER_0_MAXTEMP 250
 #define HEATER_1_MAXTEMP 190
 #define HEATER_2_MAXTEMP 190
 #define BED_MAXTEMP 50

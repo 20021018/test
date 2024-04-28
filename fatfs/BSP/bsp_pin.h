@@ -55,8 +55,8 @@
 //#define TEMP_BED_PIN        GPIOB, GPIO_Pin_0
 //#define TEMP_BED_CHANNEL    ADC_Channel_8   //对应的ADC采样通道
 
-#define TEMP_0_PIN          GPIOB, GPIO_Pin_1	     
-#define TEMP_0_CHANNEL      ADC_Channel_9  //对应的ADC采样通道
+#define TEMP_0_PIN          GPIOC, GPIO_Pin_1	     
+#define TEMP_0_CHANNEL      ADC_Channel_11  //对应的ADC采样通道
 
 //#define PLATFORM_PIN    GPIOA, GPIO_Pin_15	//_平台调平检测
 
