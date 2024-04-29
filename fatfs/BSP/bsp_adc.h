@@ -14,7 +14,7 @@ void Adc1_Init(uint16_t ADC_Channel);
 
 
 
-
+u16 get_ADC_Result(void);
 
 
 

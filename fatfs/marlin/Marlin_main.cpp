@@ -474,11 +474,12 @@ int main()
 
 	while(1)
 	{
+
 //	      printf("T:");//for test
 //	      printf("%.1f ",degHotend(tmp_extruder));//for test
 //
 		if(buflen < (BUFSIZE-1))
-			get_command(); //把串口缓冲区的数据解析出来保存到GM码命令缓冲区中
+	 	get_command(); //把串口缓冲区的数据解析出来保存到GM码命令缓冲区中
 		#ifdef SDSUPPORT
 		card.checkautostart(false); //初始化SD卡,以及M23,	M24支持G码写入SD卡
 		#endif

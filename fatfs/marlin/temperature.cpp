@@ -991,10 +991,10 @@ void TIM3_IRQHandler(void)
 		/***************模拟PWM,用来挤出机加热和热床*******************/
 		//起始值 PWM为0的时候的，让输出有效，等到sotf_pwm小于pwm_count的时候，输出关掉，这样就能产生0--soft_pwm的占空比的模拟PWM
 		//温度的控制，就是在main中manage_heater()函数中通过PID或者误差计算出soft_pwm[]的数据，来输出软pwm来调整温度的
-		if(pwm_count == 0){ 
+		if(pwm_count == 0){
 			soft_pwm_0 = soft_pwm[0]; //1个挤出机
 			if(soft_pwm_0 > 0)
-			{				
+			{
 //				WRITE(HEATER_0_PIN,!LOW);//原来为low
 //				WRITE(HEATER_0_PIN,!HIGH);
 //				WRITE(HEATER_0_PIN,!LOW);
@@ -1025,14 +1025,14 @@ void TIM3_IRQHandler(void)
 			#endif
 		}
 		//soft_pwm是设定的占空比,在0---soft_pwm_0的区间内,输出低电平,soft_pwm_0---0xff区间输出高电平
-		if(soft_pwm_0 <= pwm_count)	WRITE(HEATER_0_PIN,!TEMP_HEAT_VALID); 
+		if(soft_pwm_0 <= pwm_count)	WRITE(HEATER_0_PIN,!TEMP_HEAT_VALID);
 		#if EXTRUDERS > 1
 		if(soft_pwm_1 <= pwm_count) WRITE(HEATER_1_PIN,!TEMP_HEAT_VALID);
 		#endif
 		#if EXTRUDERS > 2
 		if(soft_pwm_2 <= pwm_count) WRITE(HEATER_2_PIN,!TEMP_HEAT_VALID);
 		#endif
-		#if defined(HEATER_BED_PIN) 
+		#if defined(HEATER_BED_PIN)
 		if(soft_pwm_b <= pwm_count) WRITE(HEATER_BED_PIN,!TEMP_HEAT_VALID);
 		#endif
 		#ifdef FAN_SOFT_PWM
@@ -1056,6 +1056,7 @@ void TIM3_IRQHandler(void)
 			case 1: //读挤出机ADC的数据,数据是12位,只要前10位为了和以前的AVR匹配
 				#if defined(TEMP_0_PIN)
 					raw_temp_0_value += (ADC_GetConversionValue(ADC1)>>2);  //ADC的数值是累加的,因为stm32的AD是12位的，以前AD是10位的，所有去掉了最后两位数据
+				     printf( "%04d\r\n", ADC_GetConversionValue(ADC1));
 				#endif
 				#ifdef HEATER_0_USES_MAX6675 // TODO remove the blocking
 					raw_temp_0_value = read_max6675(); //如果是max6675就直接读程序温度
@@ -1069,13 +1070,13 @@ void TIM3_IRQHandler(void)
 				temp_state = 3;
 				break;
 			case 3: // Measure TEMP_BED
-				#if defined(TEMP_BED_PIN) 
+				#if defined(TEMP_BED_PIN)
 					raw_temp_bed_value += (ADC_GetConversionValue(ADC1)>>2);//累加热床的温度
 				#endif
 				temp_state = 4;
 				break;
 			case 4: //挤出机1的温度
-				#if defined(TEMP_1_PIN) 
+				#if defined(TEMP_1_PIN)
 					Adc1_Init(ADC_Channel_9);
 				#endif
 				temp_state = 5;
@@ -1087,14 +1088,14 @@ void TIM3_IRQHandler(void)
 				temp_state = 6;
 				break;
 			case 6: //挤出机2的温度
-				#if defined(TEMP_2_PIN) 
+				#if defined(TEMP_2_PIN)
 				Adc1_Init(ADC_Channel_8);
 				#endif
-		 //   lcd_buttons_update(); 
+		 //   lcd_buttons_update();
 				temp_state = 7;
 				break;
 			case 7: // Measure TEMP_2
-				#if defined(TEMP_2_PIN) 
+				#if defined(TEMP_2_PIN)
 				 raw_temp_2_value += ADC_GetConversionValue(ADC1>>2);////ADC;
 				#endif
 				temp_state = 0; //0-7不断的循环
@@ -1172,7 +1173,7 @@ void TIM3_IRQHandler(void)
 					min_temp_error(2);
 			}
 	#endif
-		
+
 		/* No bed MINTEMP error? */
 	#if defined(BED_MAXTEMP) && (TEMP_SENSOR_BED != 0)
 	# if HEATER_BED_RAW_LO_TEMP > HEATER_BED_RAW_HI_TEMP
@@ -1184,7 +1185,7 @@ void TIM3_IRQHandler(void)
 				 bed_max_temp_error();
 			}
 	#endif
-		}  
+		}
 	}
 }
 #ifdef __cplusplus
