@@ -830,6 +830,9 @@ void tp_init()
 #endif
   }
 #endif //BED_MAXTEMP
+#if defined(TEMP_0_PIN)
+                  Adc1_Init(TEMP_0_CHANNEL);// Start conversion
+#endif
 }
 
 
@@ -1048,15 +1051,15 @@ void TIM3_IRQHandler(void)
 
 		switch(temp_state) {
 			case 0: // 挤出机0测温
-				#if defined(TEMP_0_PIN) 
-					Adc1_Init(TEMP_0_CHANNEL);// Start conversion
-				#endif
+//				#if defined(TEMP_0_PIN)
+//					Adc1_Init(TEMP_0_CHANNEL);// Start conversion
+//				#endif
 				temp_state = 1;
 				break;
 			case 1: //读挤出机ADC的数据,数据是12位,只要前10位为了和以前的AVR匹配
 				#if defined(TEMP_0_PIN)
 					raw_temp_0_value += (ADC_GetConversionValue(ADC1)>>2);  //ADC的数值是累加的,因为stm32的AD是12位的，以前AD是10位的，所有去掉了最后两位数据
-				     printf( "%04d\r\n", ADC_GetConversionValue(ADC1));
+				    // printf( "%04d\r\n", ADC_GetConversionValue(ADC1));
 				#endif
 				#ifdef HEATER_0_USES_MAX6675 // TODO remove the blocking
 					raw_temp_0_value = read_max6675(); //如果是max6675就直接读程序温度

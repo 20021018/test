@@ -72,7 +72,7 @@ all: fatfs.elf secondary-outputs
 
 # 工具调用
 fatfs.elf: $(OBJS) $(USER_OBJS)
-	@	@	riscv-none-embed-g++ -march=rv32imacxw -mabi=ilp32 -msmall-data-limit=8 -msave-restore -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -Wuninitialized  -g -T "D:\桌面\毕业设计\程序源码\mini-3D-printer based on ch32v307 - git\fatfs\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -L"../LD" -Wl,-Map,"fatfs.map" --specs=nano.specs --specs=nosys.specs  -o "fatfs.elf" $(OBJS) $(USER_OBJS) $(LIBS) -lprintfloat
+	@	@	riscv-none-embed-g++ -march=rv32imacxw -mabi=ilp32 -msmall-data-limit=8 -msave-restore -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -Wuninitialized  -g -T "D:\桌面\test-master\fatfs\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -L"../LD" -Wl,-Map,"fatfs.map" --specs=nano.specs --specs=nosys.specs  -o "fatfs.elf" $(OBJS) $(USER_OBJS) $(LIBS) -lprintfloat
 	@	@
 fatfs.hex: fatfs.elf
 	@	riscv-none-embed-objcopy -O ihex "fatfs.elf"  "fatfs.hex"
