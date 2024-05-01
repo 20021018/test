@@ -580,7 +580,7 @@ void get_command()
 //    while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET)
   {
     serial_char = MYSERIAL.read(); //串口缓存区中取出字符
-    printf("串口缓冲区：%s\n",serial_char);
+   // printf("串口缓冲区：%s\n",serial_char);
     if(serial_char == '\n' ||
        serial_char == '\r' ||
        (serial_char == ':' && comment_mode == false) ||
@@ -1227,7 +1227,7 @@ void process_commands()
 
         printf(" B@:");
         printf("%d",getHeaterPower(-1));
-        printf("\n\r");
+        printf(" \n\r");
       return;
       break;
     case 109:

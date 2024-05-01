@@ -38,7 +38,7 @@
 #define Y_ENABLE_PIN        GPIOC, GPIO_Pin_4	
 #define Y_STOP_PIN          GPIOC, GPIO_Pin_4	
 
-#define Z_STEP_PIN          GPIOA, GPIO_Pin_4	  //Z轴电机
+#define Z_STEP_PIN          GPIOA, GPIO_Pin_15	  //Z轴电机
 #define Z_DIR_PIN           GPIOA, GPIO_Pin_14	  //_从PA3 改到了PA14
 #define Z_ENABLE_PIN        GPIOC, GPIO_Pin_4
 #define Z_STOP_PIN          GPIOC, GPIO_Pin_4
