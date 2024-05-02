@@ -27,6 +27,9 @@ extern "C" {
 //}
 
 
+
+volatile unsigned long last_print_time = 0 ; //为了配合上位机
+
 void USART2_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
 
 /*********************************************************************
@@ -50,6 +53,7 @@ if (SERIAL_PORT == 2||test_PORT==1)
         while(USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET);
         USART_SendData(USART2, *buf++);
        // USART_SendData(USART1, *buf++);
+        LAST_PRINT_TIME=millis();//为了配合上位机
     }
 
     return size;

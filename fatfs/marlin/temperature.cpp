@@ -360,10 +360,14 @@ void PID_autotune(float temp, int extruder, int ncycles)
     if(millis() - temp_millis > 2000) {
 			int p;
 			if (extruder<0){
-	      p=soft_pwm_bed;       
+	      p=soft_pwm_bed;
+	      printf(MSG_OK);
+	      printf("\r\n");
 	      printf("ok B:");
 			}else{
-	      p=soft_pwm[extruder];       
+	      p=soft_pwm[extruder];
+	      printf(MSG_OK);
+	      printf("\r\n");
 	      printf("ok T:");
 			}
 			
@@ -1189,6 +1193,24 @@ void TIM3_IRQHandler(void)
 			}
 	#endif
 		}
+//配合上位机，读取距离上次print行为过去了多久，超过10s自动发送 MSG_OK printf(MSG_OK);
+  #if defined(LAST_PRINT_TIME)
+  if((millis()-LAST_PRINT_TIME)>10000UL)
+  {
+//  u8 havesend=0;
+//  if(!havesend)
+//  havesend=1;
+
+//
+//  printf(MSG_OK);
+//  printf("\r\n");
+
+ // printf(MSG_OK);
+
+//  LAST_PRINT_TIME=millis();
+  }
+  #endif
+//
 	}
 }
 #ifdef __cplusplus

@@ -40,6 +40,11 @@ typedef struct
 
 extern ring_buffer rx_buffer;
 
+
+extern volatile unsigned long last_print_time; //为了配合上位机
+#define LAST_PRINT_TIME last_print_time
+
+
 void USART2_IRQHandler(void);
 
 #ifdef __cplusplus

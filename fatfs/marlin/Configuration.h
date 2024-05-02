@@ -24,11 +24,11 @@
 
 /*****************最大行程********************/
 // Travel limits after homing
-#define X_MAX_POS 50
+#define X_MAX_POS 150
 #define X_MIN_POS 0
-#define Y_MAX_POS 50
+#define Y_MAX_POS 150
 #define Y_MIN_POS 0
-#define Z_MAX_POS 50
+#define Z_MAX_POS 150
 #define Z_MIN_POS 0
 
 /******************(坐标轴增加时)电机的方向********************/

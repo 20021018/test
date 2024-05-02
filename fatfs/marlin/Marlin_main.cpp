@@ -1206,6 +1206,8 @@ void process_commands()
         break;
       }
       #if defined(TEMP_0_PIN)
+          printf(MSG_OK);
+          printf("\r\n");
         printf("ok T:");
         printf("%.1f",degHotend(tmp_extruder));
         printf(" /");
@@ -2072,6 +2074,7 @@ void ClearToSend()
     return;
   #endif //SDSUPPORT
   printf(MSG_OK);
+  printf("\r\n");///原本没有这句话，为了配合打印机上位机添加的
 }
 //获取运动坐标
 void get_coordinates()
