@@ -38,6 +38,7 @@
 #include "bsp_adc.h"
 #include "bsp_usart.h"
 #include "language.h"
+#include "stepper.h".h"
 
 //解决多次重复定义，在头文件声明，源文件定义。 注释掉的是类型1的传感器，根据B值最新选择为9
 
@@ -1195,7 +1196,7 @@ void TIM3_IRQHandler(void)
 		}
 //配合上位机，读取距离上次print行为过去了多久，超过10s自动发送 MSG_OK printf(MSG_OK);
   #if defined(LAST_PRINT_TIME)
-  if((millis()-LAST_PRINT_TIME)>10000UL)
+  if((millis()-LAST_PRINT_TIME)>2000UL&&(!moving_flag))
   {
 //  u8 havesend=0;
 //  if(!havesend)
@@ -1205,9 +1206,15 @@ void TIM3_IRQHandler(void)
 //  printf(MSG_OK);
 //  printf("\r\n");
 
- // printf(MSG_OK);
+   printf(MSG_OK);
+   printf("\r\n");
 
 //  LAST_PRINT_TIME=millis();
+  }
+  else if ((millis()-LAST_PRINT_TIME)>2000UL&&moving_flag)
+  {
+      moving_flag=false; //每当调用 G28 或者G1 XXX 的时候moving_flag置位，等2s之后再发ok
+
   }
   #endif
 //

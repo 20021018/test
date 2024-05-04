@@ -210,6 +210,8 @@ static long gcode_N, gcode_LastN, Stopped_gcode_LastN = 0;
 
 volatile bool relative_mode = false;  //Determines Absolute or Relative Coordinates
 
+
+
 static char cmdbuffer[BUFSIZE][MAX_CMD_SIZE];
 static bool fromsd[BUFSIZE];
 static int bufindr = 0;
@@ -943,6 +945,7 @@ void process_commands()
       if(Stopped == false) {
         get_coordinates(); // For X Y Z E F
         prepare_move();
+        moving_flag=true;//上位机  TIM2_I
         //ClearToSend();
         return;
       }
@@ -1006,6 +1009,7 @@ void process_commands()
       #endif //FWRETRACT
     case 28: //G28 Home all Axis one at a time
       All_Axis_Go_Home();
+      moving_flag=true;//上位机
       break;
     case 90: // G90
       relative_mode = false;

@@ -58,6 +58,9 @@ long st_syn_position(uint8_t axis);
 // Get current position in steps
 long st_get_position(uint8_t axis);
 
+extern volatile bool moving_flag; //____ион╩╩З
+
+
 // The stepper subsystem goes to sleep when it runs out of things to execute. Call this
 // to notify the subsystem that it is time to go to work.
 void st_wake_up();
