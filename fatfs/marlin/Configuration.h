@@ -24,15 +24,15 @@
 
 /*****************最大行程********************/
 // Travel limits after homing
-#define X_MAX_POS 150
+#define X_MAX_POS 50
 #define X_MIN_POS 0
-#define Y_MAX_POS 150
+#define Y_MAX_POS 50
 #define Y_MIN_POS 0
-#define Z_MAX_POS 150
+#define Z_MAX_POS 42.6
 #define Z_MIN_POS 0
 
 /******************(坐标轴增加时)电机的方向********************/
-#define INVERT_X_DIR  true     // for Mendel set to false, for Orca set to true
+#define INVERT_X_DIR  false     // for Mendel set to false, for Orca set to true
 #define INVERT_Y_DIR  true    // for Mendel set to true, for Orca set to false
 #define INVERT_Z_DIR  false     // for Mendel set to false, for Orca set to true
 #define INVERT_E0_DIR true   // for direct drive extruder v9 set to true, for geared extruder set to false
@@ -74,7 +74,7 @@ extern  const bool LEVEL_INVERTING;
 #define Y_HOME_DIR  1
 #endif
 #ifdef ENDSTOPPULLUP_ZMIN
-#define Z_HOME_DIR -1
+#define Z_HOME_DIR -1 //正确归零方向是什么？
 #else
 #define Z_HOME_DIR 1
 #endif
@@ -84,7 +84,8 @@ extern  const bool LEVEL_INVERTING;
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
 /*********************归零的速度**********************/
-#define HOMING_FEEDRATE {50*10, 50*10, 20*50, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {50*6, 50*6, 20*30, 0}  // set the homing speeds (mm/min)
+//#define HOMING_FEEDRATE {50, 50, 50, 0}  // set the homing speeds (mm/min)
 /*********************通讯串口波特率************************/
 // This determines the communication speed of the printer
 #define BAUDRATE 115200

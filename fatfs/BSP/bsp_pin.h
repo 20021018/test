@@ -24,8 +24,10 @@
 #define X_MAX_PIN         	GPIOB, GPIO_Pin_8	
 #define Y_MIN_PIN           GPIOB, GPIO_Pin_9	
 #define Y_MAX_PIN         	GPIOC, GPIO_Pin_13	
-#define Z_MIN_PIN           GPIOB, GPIO_Pin_10
-#define Z_MAX_PIN         	GPIOC, GPIO_Pin_15
+//#define Z_MAX_PIN           GPIOB, GPIO_Pin_10  // 只需要ZMAX,调换
+//#define Z_MIN_PIN           GPIOC, GPIO_Pin_15  //
+#define Z_MIN_PIN           GPIOB, GPIO_Pin_10  //
+#define Z_MAX_PIN         	GPIOC, GPIO_Pin_15  //
 
 
 #define X_STEP_PIN          GPIOB, GPIO_Pin_2	  //X轴电机
@@ -39,7 +41,7 @@
 #define Y_STOP_PIN          GPIOC, GPIO_Pin_4	
 
 #define Z_STEP_PIN          GPIOA, GPIO_Pin_15	  //Z轴电机
-#define Z_DIR_PIN           GPIOA, GPIO_Pin_14	  //_从PA3 改到了PA14
+#define Z_DIR_PIN           GPIOA, GPIO_Pin_9	  //_从PA3 改到了PA14 ,再修改为PA9
 #define Z_ENABLE_PIN        GPIOC, GPIO_Pin_4
 #define Z_STOP_PIN          GPIOC, GPIO_Pin_4
 
