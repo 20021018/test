@@ -32,9 +32,9 @@
 #define Z_MIN_POS 0
 
 /******************(坐标轴增加时)电机的方向********************/
-#define INVERT_X_DIR  false     // for Mendel set to false, for Orca set to true
+#define INVERT_X_DIR  true     // for Mendel set to false, for Orca set to true
 #define INVERT_Y_DIR  true    // for Mendel set to true, for Orca set to false
-#define INVERT_Z_DIR  false     // for Mendel set to false, for Orca set to true
+#define INVERT_Z_DIR  true     // for Mendel set to false, for Orca set to true
 #define INVERT_E0_DIR true   // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E1_DIR false    // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E2_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
@@ -42,12 +42,12 @@
 /****************限位开关的选用**************/
 // corse Endstop Settings
 // fine Enstop settings: Individual Pullups. will be ignord if ENDSTOPPULLUPS is defined
-//#define ENDSTOPPULLUP_XMAX
+#define ENDSTOPPULLUP_XMAX
 //#define ENDSTOPPULLUP_YMAX
-//#define ENDSTOPPULLUP_ZMAX
-#define ENDSTOPPULLUP_XMIN
+#define ENDSTOPPULLUP_ZMAX
+//#define ENDSTOPPULLUP_XMIN
 #define ENDSTOPPULLUP_YMIN
-#define ENDSTOPPULLUP_ZMIN
+//#define ENDSTOPPULLUP_ZMIN
 
 
 /******************限位开关的接法,false是常闭,true常开,公共端C接信号,常开(NO)或者常闭(NC)接GND***********************/

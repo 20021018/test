@@ -20,14 +20,18 @@
 
 #define POWER_CHK       	GPIOA, GPIO_Pin_11	 //电源掉电检测
 
-#define X_MIN_PIN           GPIOB, GPIO_Pin_7	   //XMIN限位开关
-#define X_MAX_PIN         	GPIOB, GPIO_Pin_8	
+//#define X_MIN_PIN           GPIOB, GPIO_Pin_7	   //XMIN限位开关
+//#define X_MAX_PIN         	GPIOB, GPIO_Pin_8
+#define X_MAX_PIN           GPIOB, GPIO_Pin_7      // 只需要XMAX,调换
+#define X_MIN_PIN           GPIOB, GPIO_Pin_8
+
 #define Y_MIN_PIN           GPIOB, GPIO_Pin_9	
 #define Y_MAX_PIN         	GPIOC, GPIO_Pin_13	
-//#define Z_MAX_PIN           GPIOB, GPIO_Pin_10  // 只需要ZMAX,调换
-//#define Z_MIN_PIN           GPIOC, GPIO_Pin_15  //
-#define Z_MIN_PIN           GPIOB, GPIO_Pin_10  //
-#define Z_MAX_PIN         	GPIOC, GPIO_Pin_15  //
+
+#define Z_MAX_PIN           GPIOB, GPIO_Pin_10  // 只需要ZMAX,调换
+#define Z_MIN_PIN           GPIOC, GPIO_Pin_15  //
+//#define Z_MIN_PIN           GPIOB, GPIO_Pin_10  //
+//#define Z_MAX_PIN         	GPIOC, GPIO_Pin_15  //
 
 
 #define X_STEP_PIN          GPIOB, GPIO_Pin_2	  //X轴电机
