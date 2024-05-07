@@ -129,7 +129,7 @@ void checkHitEndstops()
    if(endstop_z_hit) {
      printf(" Z: %f ",(float)endstops_trigsteps[Z_AXIS]/axis_steps_per_unit[Z_AXIS]);
    }
-   printf("\n\r");
+   printf("\r\n");
    endstop_x_hit=false;
    endstop_y_hit=false;
    endstop_z_hit=false;

@@ -529,7 +529,7 @@ void plan_buffer_line(const float &x, const float &y, const float &z, const floa
       position[E_AXIS]=target[E_AXIS]; //behave as if the move really took place, but ignore E part
       printf(MSG_START);
       printf(MSG_ERR_COLD_EXTRUDE_STOP);
-			printf("\n\r");
+			printf("\r\n");
     }
     #ifdef PREVENT_LENGTHY_EXTRUDE //挤出长度保护
     if(labs(target[E_AXIS]-position[E_AXIS])>axis_steps_per_unit[E_AXIS]*EXTRUDE_MAXLENGTH)
@@ -537,7 +537,7 @@ void plan_buffer_line(const float &x, const float &y, const float &z, const floa
       position[E_AXIS]=target[E_AXIS]; //behave as if the move really took place, but ignore E part
       printf(MSG_START);;
       printf(MSG_ERR_LONG_EXTRUDE_STOP);
-			printf("\n\r");
+			printf("\r\n");
     }
     #endif
   }

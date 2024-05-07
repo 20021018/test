@@ -662,6 +662,7 @@ void get_command()
                 break;
           #endif //SDSUPPORT
               printf(MSG_OK);
+              printf("\r\n");
             }
             else {
               printf(MSG_ERR_STOPPED);
@@ -1225,7 +1226,7 @@ void process_commands()
       #else
         printf(MSG_ERR);
         printf(MSG_ERR_NO_THERMISTORS);
-				printf("\n\r");
+				printf("\r\n");
       #endif
 
         printf(" @:");
@@ -1292,7 +1293,7 @@ void process_commands()
                  printf( "? \n\r" );
               }
             #else
-              printf("\n\r");
+              printf("\r\n");
             #endif
             codenum = millis();
           }
@@ -1638,7 +1639,7 @@ void process_commands()
          printf(",");
          printf("%f",extruder_offset[Y_AXIS][tmp_extruder]);
       }
-      printf("\n\r");
+      printf("\r\n");
     }break;
     #endif
     case 220: // M220 S<factor in percent>- set speed factor override percentage
@@ -1718,6 +1719,7 @@ void process_commands()
 
         updatePID();
         printf(MSG_OK);
+        printf("\r\n");
         printf(" p:");
         printf("%f",Kp);
         printf(" i:");
@@ -1729,7 +1731,7 @@ void process_commands()
         //Kc does not have scaling applied above, or in resetting defaults
         printf("%f",Kc);
         #endif
-        printf("\n\r");
+        printf("\r\n");
       }
       break;
     #endif //PIDTEMP
@@ -2077,8 +2079,13 @@ void ClearToSend()
   if(fromsd[bufindr])
     return;
   #endif //SDSUPPORT
+
   printf(MSG_OK);
-  printf("\r\n");///原本没有这句话，为了配合打印机上位机添加的
+  printf("\r\n");
+ // printf("\r\n");///原本没有这句话，为了配合打印机上位机添加的
+ // printf("\r\n");///原本没有这句话，为了配合打印机上位机添加的
+
+ 
 }
 //获取运动坐标
 void get_coordinates()
@@ -2318,7 +2325,7 @@ void kill()
 #endif  
   printf(MSG_START);
   printf(MSG_ERR_KILLED);
-	printf("\n\r");
+	printf("\r\n");
   ////LCD_ALERTMESSAGEPGM(MSG_KILLED);
   suicide(); //软复位
   while(1) { /* Intentionally left empty */ } // Wait for reset

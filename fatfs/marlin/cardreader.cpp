@@ -265,7 +265,7 @@ void CardReader::write_command(char *buf)
   {
     printf(MSG_ERR);
     printf(MSG_SD_ERR_WRITE_TO_FILE);
-		printf("\n\r");
+		printf("\r\n");
   }
 }
 
@@ -333,6 +333,7 @@ int CardReader::savefile(char *pcmdbuf)
 			else
 			{
 				printf(MSG_OK);
+				printf("\r\n");
 				return 0;
 			}
 		}

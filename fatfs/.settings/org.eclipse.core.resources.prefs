@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//.settings/org.eclipse.core.resources.prefs=GBK
 encoding//BSP/bsp_adc.c=UTF-8
+encoding//marlin/Configuration.h=UTF-8
 encoding//marlin/Configuration_adv.h=UTF-8
 encoding//marlin/Marlin.h=UTF-8
 encoding//marlin/SerialLcd.cpp=UTF-8

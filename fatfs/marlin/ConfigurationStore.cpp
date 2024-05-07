@@ -496,7 +496,7 @@ void Config_PrintSettings()
   printf(" Y%f",axis_steps_per_unit[1]);
   printf(" Z%f",axis_steps_per_unit[2]);
   printf(" E%f",axis_steps_per_unit[3]);
-  printf("\n\r");
+  printf("\r\n");
       
   printf(MSG_START);
   printf("Maximum feedrates (mm/s):");
@@ -505,7 +505,7 @@ void Config_PrintSettings()
   printf(" Y%f",max_feedrate[1] ); 
   printf(" Z%f", max_feedrate[2] ); 
   printf(" E%f", max_feedrate[3]);
-  printf("\n\r");
+  printf("\r\n");
 
   printf(MSG_START);
   printf("Maximum Acceleration (mm/s2):");
@@ -514,13 +514,13 @@ void Config_PrintSettings()
   printf(" Y%ld" , max_acceleration_units_per_sq_second[1] ); 
   printf(" Z%ld" ,max_acceleration_units_per_sq_second[2] );
   printf(" E%ld" ,max_acceleration_units_per_sq_second[3]);
-  printf("\n\r");
+  printf("\r\n");
   printf(MSG_START);
   printf("Acceleration: S=acceleration, T=retract acceleration");
   printf(MSG_START);
   printf("  M204 S%f",acceleration ); 
   printf(" T%f" ,retract_acceleration);
-  printf("\n\r");
+  printf("\r\n");
 
   printf(MSG_START);
   printf("Advanced variables: S=Min feedrate (mm/s), T=Min travel feedrate (mm/s), B=minimum segment time (ms), X=maximum XY jerk (mm/s),  Z=maximum Z jerk (mm/s),  E=maximum E jerk (mm/s)");
@@ -531,7 +531,7 @@ void Config_PrintSettings()
   printf(" X%f" ,max_xy_jerk ); 
   printf(" Z%f" ,max_z_jerk);
   printf(" E%f" ,max_e_jerk);
-  printf("\n\r"); 
+  printf("\r\n");
 
   printf(MSG_START);
   printf("Home offset (mm):");
@@ -539,7 +539,7 @@ void Config_PrintSettings()
   printf("  M206 X%f",add_homeing[0] );
   printf(" Y%f" ,add_homeing[1] );
   printf(" Z%f" ,add_homeing[2] );
-  printf("\n\r");
+  printf("\r\n");
 #ifdef PIDTEMP
   printf(MSG_START);
   printf("PID settings:");
@@ -547,7 +547,7 @@ void Config_PrintSettings()
   printf("   M301 P%f",Kp); 
   printf(" I%f" ,unscalePID_i(Ki)); 
   printf(" D%f" ,unscalePID_d(Kd));
-  printf("\n\r"); 
+  printf("\r\n");
 #endif
 } 
 #endif

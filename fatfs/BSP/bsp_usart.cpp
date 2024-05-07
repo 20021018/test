@@ -53,7 +53,12 @@ if (SERIAL_PORT == 2||test_PORT==1)
         while(USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET);
         USART_SendData(USART2, *buf++);
        // USART_SendData(USART1, *buf++);
+       #ifdef LAST_PRINT_TIME
         LAST_PRINT_TIME=millis();//为了配合上位机
+        #endif
+
+     // Delay_Ms(50);//测试能不能通过延时解决问题
+
     }
 
     return size;

@@ -8,30 +8,31 @@
 #define STRING_VERSION_CONFIG_H __DATE__ " " __TIME__ // build date and time
 #define STRING_CONFIG_H_AUTHOR "(SardineBoard, default config)" //Who made the changes.
 
-/***************ÊÇ·ñÊÇCOREXY½á¹¹*************/
+/***************æ˜¯å¦æ˜¯COREXYç»“æ„*************/
 //#define COREXY
 
-/**************1mmµÄÂö³åÊı*************/
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {106.6667,106.6667,400,192}
-/**************×î´óËÙ¶È***************/
+/**************1mmçš„è„‰å†²æ•°*************/
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {106.6667,106.6667,400,103}//æŒ¤å‡ºæœºæ ¡æ­£ ï¼šhttps://dolphin.littlefish.love/calibration/04-extruder-e-steps-calibration/
+/**************æœ€å¤§é€Ÿåº¦***************/
 #define DEFAULT_MAX_FEEDRATE          {80, 80, 30, 30}    // (mm/sec)
-/***************×î´ó¼ÓËÙ¶È*********************/
+/***************æœ€å¤§åŠ é€Ÿåº¦*********************/
 #define DEFAULT_MAX_ACCELERATION      {1000,1000,100,1000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
-/****************Ä¬ÈÏ¼ÓËÙ¶È******************/
+/****************é»˜è®¤åŠ é€Ÿåº¦******************/
 #define DEFAULT_ACCELERATION         1000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
-/*****************»Ø³éÊ±µÄ¼ÓËÙ¶È********************/
+/*****************å›æŠ½æ—¶çš„åŠ é€Ÿåº¦********************/
 #define DEFAULT_RETRACT_ACCELERATION  1000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
 
-/*****************×î´óĞĞ³Ì********************/
+/*****************æœ€å¤§è¡Œç¨‹********************/
 // Travel limits after homing
 #define X_MAX_POS 50
 #define X_MIN_POS 0
 #define Y_MAX_POS 50
 #define Y_MIN_POS 0
-#define Z_MAX_POS 42.6
+#define Z_MAX_POS 42.1 //é‡å¤æµ‹è¯•æ‰€å¾—
+
 #define Z_MIN_POS 0
 
-/******************(×ø±êÖáÔö¼ÓÊ±)µç»úµÄ·½Ïò********************/
+/******************(åæ ‡è½´å¢åŠ æ—¶)ç”µæœºçš„æ–¹å‘********************/
 #define INVERT_X_DIR  true     // for Mendel set to false, for Orca set to true
 #define INVERT_Y_DIR  true    // for Mendel set to true, for Orca set to false
 #define INVERT_Z_DIR  true     // for Mendel set to false, for Orca set to true
@@ -39,7 +40,7 @@
 #define INVERT_E1_DIR false    // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E2_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
 
-/****************ÏŞÎ»¿ª¹ØµÄÑ¡ÓÃ**************/
+/****************é™ä½å¼€å…³çš„é€‰ç”¨**************/
 // corse Endstop Settings
 // fine Enstop settings: Individual Pullups. will be ignord if ENDSTOPPULLUPS is defined
 #define ENDSTOPPULLUP_XMAX
@@ -50,7 +51,7 @@
 //#define ENDSTOPPULLUP_ZMIN
 
 
-/******************ÏŞÎ»¿ª¹ØµÄ½Ó·¨,falseÊÇ³£±Õ,true³£¿ª,¹«¹²¶ËC½ÓĞÅºÅ,³£¿ª(NO)»òÕß³£±Õ(NC)½ÓGND***********************/
+/******************é™ä½å¼€å…³çš„æ¥æ³•,falseæ˜¯å¸¸é—­,trueå¸¸å¼€,å…¬å…±ç«¯Cæ¥ä¿¡å·,å¸¸å¼€(NO)æˆ–è€…å¸¸é—­(NC)æ¥GND***********************/
 // The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
 //const bool X_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops.
 //const bool Y_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops.
@@ -61,7 +62,7 @@ extern  const bool Y_ENDSTOPS_INVERTING; // set to true to invert the logic of t
 extern  const bool Z_ENDSTOPS_INVERTING; // set to true to invert the logic of the endstops.
 extern  const bool LEVEL_INVERTING;
 
-/****************ÏŞÎ»¿ª¹Ø¹éÁãµÄÊ±ºòÈ¥×îĞ¡Î»ÖÃ»¹ÊÇ×î´óÎ»ÖÃ,¸ù¾İÏŞÎ»¿ª¹ØÑ¡Ôñ********************/
+/****************é™ä½å¼€å…³å½’é›¶çš„æ—¶å€™å»æœ€å°ä½ç½®è¿˜æ˜¯æœ€å¤§ä½ç½®,æ ¹æ®é™ä½å¼€å…³é€‰æ‹©********************/
 // Sets direction of endstops when homing; 1=MAX, -1=MIN
 #ifdef ENDSTOPPULLUP_XMIN
 #define X_HOME_DIR -1
@@ -74,32 +75,32 @@ extern  const bool LEVEL_INVERTING;
 #define Y_HOME_DIR  1
 #endif
 #ifdef ENDSTOPPULLUP_ZMIN
-#define Z_HOME_DIR -1 //ÕıÈ·¹éÁã·½ÏòÊÇÊ²Ã´£¿
+#define Z_HOME_DIR -1 //æ­£ç¡®å½’é›¶æ–¹å‘æ˜¯ä»€ä¹ˆï¼Ÿ
 #else
 #define Z_HOME_DIR 1
 #endif
 
 
-/*******************ÔË¶¯ÖáµÄ¸öÊı******************/
+/*******************è¿åŠ¨è½´çš„ä¸ªæ•°******************/
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-/*********************¹éÁãµÄËÙ¶È**********************/
+/*********************å½’é›¶çš„é€Ÿåº¦**********************/
 #define HOMING_FEEDRATE {50*6, 50*6, 20*30, 0}  // set the homing speeds (mm/min)
 //#define HOMING_FEEDRATE {50, 50, 50, 0}  // set the homing speeds (mm/min)
-/*********************Í¨Ñ¶´®¿Ú²¨ÌØÂÊ************************/
+/*********************é€šè®¯ä¸²å£æ³¢ç‰¹ç‡************************/
 // This determines the communication speed of the printer
 #define BAUDRATE 115200
-/*****************¼·³ö»úµÄ¸öÊı***********************/
+/*****************æŒ¤å‡ºæœºçš„ä¸ªæ•°***********************/
 // This defines the number of extruders
 #define EXTRUDERS 1
 
-/***********************µçÔ´ÀàĞÍÑ¡Ôñ********************/
+/***********************ç”µæºç±»å‹é€‰æ‹©********************/
 //// The following define selects which power supply you have. Please choose the one that matches your setup
 // 1 = ATX
 // 2 = X-Box 360 203Watts (the blue wire connected to PS_ON and the red wire to VCC)
 #define POWER_SUPPLY 1
 
-/**********************ÎÂ¶È´«¸ĞÆ÷µÄÑ¡Ôñ(SardineBoardÖ»ÄÜÓÃ1)******************/
+/**********************æ¸©åº¦ä¼ æ„Ÿå™¨çš„é€‰æ‹©(SardineBoardåªèƒ½ç”¨1)******************/
 //===========================================================================
 //=============================Thermal Settings  ============================
 //===========================================================================
@@ -124,21 +125,21 @@ extern  const bool LEVEL_INVERTING;
 // 51 is 100k thermistor - EPCOS (1k pullup)
 // 52 is 200k thermistor - ATC Semitec 204GT-2 (1k pullup)
 // 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan) (1k pullup)
-#define TEMP_SENSOR_0 9 //ĞŞ¸ÄÕâ¸öÊıÖµĞèÒªÔÚtemperature.c ºÍTHERMISTORTABLES_H_ÀïÃæĞŞ¸Ä¶ÔÓ¦µÄ²ÎÊı±í
-#define TEMP_SENSOR_1 0//Ò»¸öÎÂ¶È´«¸ĞÆ÷
+#define TEMP_SENSOR_0 9 //ä¿®æ”¹è¿™ä¸ªæ•°å€¼éœ€è¦åœ¨temperature.c å’ŒTHERMISTORTABLES_H_é‡Œé¢ä¿®æ”¹å¯¹åº”çš„å‚æ•°è¡¨
+#define TEMP_SENSOR_1 0//ä¸€ä¸ªæ¸©åº¦ä¼ æ„Ÿå™¨
 #define TEMP_SENSOR_2 0
-#define TEMP_SENSOR_BED 0//Ã»ÓĞÈÈ´²ÎÂ¶È´«¸ĞÆ÷
+#define TEMP_SENSOR_BED 0//æ²¡æœ‰çƒ­åºŠæ¸©åº¦ä¼ æ„Ÿå™¨
 
-//ÓÃÀ´±íÊ¾IOÊä³ö¸ßµçÆ½¼ÓÈÈ»¹ÊÇµÍµçÆ½¼ÓÈÈ
-#define TEMP_HEAT_VALID  HIGH  //pnp µÍµçÆ½µ¼Í¨ ->  aon6504 ¸ßµçÆ½µ¼Í¨
+//ç”¨æ¥è¡¨ç¤ºIOè¾“å‡ºé«˜ç”µå¹³åŠ çƒ­è¿˜æ˜¯ä½ç”µå¹³åŠ çƒ­
+#define TEMP_HEAT_VALID  HIGH  //pnp ä½ç”µå¹³å¯¼é€š ->  aon6504 é«˜ç”µå¹³å¯¼é€š
 
-/********************M109¼ÓÈÈÊ±¹Ì¶¨Ê±¼äÄÚµÄÎÂ¶ÈÆ«²îÖµ***********************/
+/********************M109åŠ çƒ­æ—¶å›ºå®šæ—¶é—´å†…çš„æ¸©åº¦åå·®å€¼***********************/
 // Actual temperature must be close to target for this long before M109 returns success
 #define TEMP_RESIDENCY_TIME 10  // (seconds)
 #define TEMP_HYSTERESIS 10       // (degC) range of +/- temperatures considered "close" to the target one
 #define TEMP_WINDOW     10       // (degC) Window around target to start the recidency timer x degC early.
 
-/*************************×îĞ¡µÄ¹¤×÷ÎÂ¶È**************************/
+/*************************æœ€å°çš„å·¥ä½œæ¸©åº¦**************************/
 // The minimal temperature defines the temperature below which the heater will not be enabled It is used
 // to check that the wiring to the thermistor is not broken.
 // Otherwise this would lead to the heater being powered on all the time.
@@ -147,7 +148,7 @@ extern  const bool LEVEL_INVERTING;
 #define HEATER_2_MINTEMP -10
 #define BED_MINTEMP 5
 
-/******************************×î´óµÄ¹¤×÷ÎÂ¶È*****************************/
+/******************************æœ€å¤§çš„å·¥ä½œæ¸©åº¦*****************************/
 // When temperature exceeds max temp, your heater will be switched off.
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
@@ -162,7 +163,7 @@ extern  const bool LEVEL_INVERTING;
 // HEATER_BED_DUTY_CYCLE_DIVIDER intervals.
 //#define HEATER_BED_DUTY_CYCLE_DIVIDER 4
 
-/**************************PID²ÎÊıµÄÉèÖÃ*************************************/
+/**************************PIDå‚æ•°çš„è®¾ç½®*************************************/
 // PID settings:
 // Comment the following line to disable PID and enable bang-bang.
 #define PIDTEMP
@@ -224,36 +225,36 @@ extern  const bool LEVEL_INVERTING;
 #endif // PIDTEMPBED
 
 
-/*********************µÍÎÂ¼·³ö±£»¤*************************/
+/*********************ä½æ¸©æŒ¤å‡ºä¿æŠ¤*************************/
 //this prevents dangerous Extruder moves, i.e. if the temperature is under the limit
 //can be software-disabled for whatever purposes by
 #define PREVENT_DANGEROUS_EXTRUDE
-/*********************×îĞ¡¼·³ö³¤¶È*************************/
+/*********************æœ€å°æŒ¤å‡ºé•¿åº¦*************************/
 //if PREVENT_DANGEROUS_EXTRUDE is on, you can still disable (uncomment) very long bits of extrusion separately.
 #define PREVENT_LENGTHY_EXTRUDE
-/*********************×îµÍ¼·³öµÄÎÂ¶È*************************/
+/*********************æœ€ä½æŒ¤å‡ºçš„æ¸©åº¦*************************/
 #define EXTRUDE_MINTEMP 100 
-/**********************Ò»´Î×î´óµÄ¼·³ö³¤¶È************************/
+/**********************ä¸€æ¬¡æœ€å¤§çš„æŒ¤å‡ºé•¿åº¦************************/
 #define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH)*2 
 
-/*********************µç»úÊ¹ÄÜÓĞĞ§µçÆ½***************************/
+/*********************ç”µæœºä½¿èƒ½æœ‰æ•ˆç”µå¹³***************************/
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
 #define X_ENABLE_ON  LOW
 #define Y_ENABLE_ON  LOW
 #define Z_ENABLE_ON  LOW
-#define E_ENABLE_ON  LOW // For all extruders¶ÔÓ¦Çı¶¯°åÊ¹ÄÜENµÍµçÆ½
-/***************½ûÓÃÄÄ¸öÖáµç»ú****************/
+#define E_ENABLE_ON  LOW // For all extruderså¯¹åº”é©±åŠ¨æ¿ä½¿èƒ½ENä½ç”µå¹³
+/***************ç¦ç”¨å“ªä¸ªè½´ç”µæœº****************/
 // Disables axis when it's not being used.
 #define DISABLE_X false
 #define DISABLE_Y false
 #define DISABLE_Z false
 #define DISABLE_E false // For all extruders
 
-/********************Ö§³ÖÈí¼ş×î´ó×îĞ¡ÏŞÎ»********************/
+/********************æ”¯æŒè½¯ä»¶æœ€å¤§æœ€å°é™ä½********************/
 #define min_software_endstops true //If true, axis won't move to coordinates less than HOME_POS.
 #define max_software_endstops true  //If true, axis won't move to coordinates greater than the defined lengths below.
 
-/*******************XYZµÄ³ß´ç******************************/
+/*******************XYZçš„å°ºå¯¸******************************/
 #define X_MAX_LENGTH (X_MAX_POS - X_MIN_POS)
 #define Y_MAX_LENGTH (Y_MAX_POS - Y_MIN_POS)
 #define Z_MAX_LENGTH (Z_MAX_POS - Z_MIN_POS)
@@ -262,21 +263,21 @@ extern  const bool LEVEL_INVERTING;
 //#define MANUAL_HOME_POSITIONS  // If defined, MANUAL_*_HOME_POS below will be used
 //#define BED_CENTER_AT_0_0  // If defined, the center of the bed is at (X=0, Y=0)
 
-/*********************ÖØĞÂÖÆ¶¨Áãµã³õµÄ×ø±ê,¿ÉÒÔÔÚÆ½Ì¨µÄÖĞ¼ä*****************/
+/*********************é‡æ–°åˆ¶å®šé›¶ç‚¹åˆçš„åæ ‡,å¯ä»¥åœ¨å¹³å°çš„ä¸­é—´*****************/
 //Manual homing switch locations:
 #define MANUAL_X_HOME_POS 0
 #define MANUAL_Y_HOME_POS 0
 #define MANUAL_Z_HOME_POS 0
 
 
-/******************************¼·³ö»úµÄÅç×ì²¹³¥******************************/
+/******************************æŒ¤å‡ºæœºçš„å–·å˜´è¡¥å¿******************************/
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
 // The offset has to be X=0, Y=0 for the extruder 0 hotend (default extruder).
 // For the other hotends it is their distance from the extruder 0 hotend.
  #define EXTRUDER_OFFSET_X {0.0, 20.00} // (in mm) for each extruder, offset of the hotend on the X axis
  #define EXTRUDER_OFFSET_Y {0.0, 5.00}  // (in mm) for each extruder, offset of the hotend on the Y axis
 
- /**************************ÔÊĞíµÄËÙ¶ÈÌø±äÁ¿(Ğ¡ÓÚÕâ¸öËÙ¶ÈËÙ¶È±ä»¯Ã»ÓĞ¼ÓËÙ¶È)*********************/
+ /**************************å…è®¸çš„é€Ÿåº¦è·³å˜é‡(å°äºè¿™ä¸ªé€Ÿåº¦é€Ÿåº¦å˜åŒ–æ²¡æœ‰åŠ é€Ÿåº¦)*********************/
 // The speed change that does not require acceleration (i.e. the software might assume it can be done instanteneously)
 #define DEFAULT_XYJERK                5.0    // (mm/sec)
 #define DEFAULT_ZJERK                 0.4     // (mm/sec)
@@ -296,7 +297,7 @@ extern  const bool LEVEL_INVERTING;
 // please keep turned on if you can.
 //#define EEPROM_CHITCHAT
 
-/*******************ÍÆ¼öµÄ´òÓ¡ÎÂ¶ÈÉèÖÃ************************/
+/*******************æ¨èçš„æ‰“å°æ¸©åº¦è®¾ç½®************************/
 #define PLA_PREHEAT_HOTEND_TEMP 190
 #define PLA_PREHEAT_HPB_TEMP 70
 #define PLA_PREHEAT_FAN_SPEED 210   // Insert Value between 0 and 255
@@ -305,7 +306,7 @@ extern  const bool LEVEL_INVERTING;
 #define ABS_PREHEAT_HPB_TEMP 100
 #define ABS_PREHEAT_FAN_SPEED 235   // Insert Value between 0 and 255
 
-/**********************ÊÇ·ñÖ§³ÖSD¿¨**************************/
+/**********************æ˜¯å¦æ”¯æŒSDå¡**************************/
 #define SDSUPPORT // Enable SD Card Support in Hardware Console
 //#define SDSLOW // Use slower SD transfer mode (not normally needed - uncomment if you're getting volume init error)
 

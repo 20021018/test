@@ -471,7 +471,7 @@ void manage_heater()
     printf("%f",iTerm[e]);
     printf(" dTerm ");
     printf("%f",dTerm[e]);  
-		printf("\n\r");
+		printf("\r\n");
     #endif //PID_DEBUG
   #else /* PID off */
     pid_output = 0;
